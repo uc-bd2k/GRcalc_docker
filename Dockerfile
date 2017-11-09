@@ -1,7 +1,9 @@
-FROM shiny.ilincs.org:5000/shiny:3.3.1-1.5.1
+FROM rocker/rstudio-stable:3.4.0
 
 RUN apt-get update -qq && \
     apt-get install -y \
+    pkg-config \
+    libnlopt-dev \
     libmariadb-client-lgpl-dev \
     zlib1g-dev \
     libssh2-1-dev \
@@ -10,8 +12,9 @@ RUN apt-get update -qq && \
     libpng-dev \
     sudo \
     wget \
-    git \
+    git
     
+RUN export ADD=shiny && bash /etc/cont-init.d/add
 
 RUN R -e "source('https://bioconductor.org/biocLite.R'); biocLite('GRmetrics', ask=FALSE, siteRepos='https://mran.microsoft.com/snapshot/2017-11-01');"
 
@@ -27,7 +30,10 @@ RUN R -e "install.packages('ghit', repos = 'https://mran.microsoft.com/snapshot/
 
 RUN R -e "ghit::install_github('uc-bd2k/shinyLi')"
 
-RUN cd /srv/shiny-server
 RUN git clone https://github.com/uc-bd2k/grcalculator.git
 RUN git clone https://github.com/uc-bd2k/grbrowser.git
 RUN git clone https://github.com/uc-bd2k/grtutorial.git
+
+RUN mv grcalculator /srv/shiny-server
+RUN mv grbrowser /srv/shiny-server
+RUN mv grtutorial /srv/shiny-server
