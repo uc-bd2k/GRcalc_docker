@@ -4,7 +4,7 @@
 
 ## GRcalculator dockerfile
 
-The dockerfile in this container builds a docker image (https://hub.docker.com/r/ucbd2k/GRcalculator-docker/) that contains an RStudio/Shiny Server installation with minimum R package and external dependencies for running the GRcalculator applications. The dockerfile clones git repositories for the three R/Shiny apps deployed at http://www.grcalculator.org and installs them inside the docker image. See below for more details on the applications and links to their code repositories.
+The dockerfile in this container builds a docker image (https://hub.docker.com/r/ucbd2k/grcalculator-docker/) that contains an RStudio/Shiny Server installation with minimum R package and external dependencies for running the GRcalculator applications. The dockerfile clones git repositories for the three R/Shiny apps deployed at http://www.grcalculator.org and installs them inside the docker image. See below for more details on the applications and links to their code repositories.
 
 ## GRcalculator: an online tool for calculating and mining drug response data
 
