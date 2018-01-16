@@ -1,5 +1,7 @@
 FROM rocker/rstudio-stable:3.4.0
 
+COPY shiny-server.conf /etc/shiny-server/
+
 RUN apt-get update -qq && \
     apt-get install -y \
     pkg-config \
