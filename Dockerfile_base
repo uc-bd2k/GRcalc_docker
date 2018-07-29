@@ -28,5 +28,8 @@ RUN R -e "install.packages('shinyBS', repos = 'https://mran.microsoft.com/snapsh
 RUN R -e "install.packages('markdown', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
 RUN R -e "install.packages('remotes', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
 RUN R -e "install.packages('htmltools', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('ggplot2', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('drc', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('plotly', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
 
 RUN R -e "source('https://bioconductor.org/biocLite.R'); biocLite('SummarizedExperiment', ask=FALSE);"
