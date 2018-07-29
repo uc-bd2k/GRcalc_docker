@@ -18,12 +18,15 @@ RUN apt-get update -qq && \
     
 RUN export ADD=shiny && bash /etc/cont-init.d/add
 
-RUN R -e "install.packages('readr', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
-RUN R -e "install.packages('shiny', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
-RUN R -e "install.packages('shinyjs', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
-RUN R -e "install.packages('DT', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
-RUN R -e "install.packages('formattable', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
-RUN R -e "install.packages('plyr', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
-RUN R -e "install.packages('shinyBS', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
-RUN R -e "install.packages('markdown', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
-RUN R -e "install.packages('ghit', repos = 'https://mran.microsoft.com/snapshot/2017-11-01')"
+RUN R -e "install.packages('readr', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('shiny', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('shinyjs', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('DT', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('formattable', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('plyr', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('shinyBS', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('markdown', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('remotes', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+RUN R -e "install.packages('htmltools', repos = 'https://mran.microsoft.com/snapshot/2018-07-27')"
+
+RUN R -e "source('https://bioconductor.org/biocLite.R'); biocLite('SummarizedExperiment', ask=FALSE);"
