@@ -1,7 +1,7 @@
 FROM ucbd2k/grcalculator-docker:base
 
-RUN R -e "remotes::install_github("uc-bd2k/GRmetrics", dependencies = F)"
-RUN R -e "remotes::install_github("uc-bd2k/shinyLi", dependencies = F)"
+RUN R -e "remotes::install_github('uc-bd2k/GRmetrics', dependencies = F)"
+RUN R -e "remotes::install_github('uc-bd2k/shinyLi', dependencies = F)"
 
 RUN git clone https://github.com/uc-bd2k/grcalculator.git
 RUN git clone https://github.com/uc-bd2k/grbrowser.git
