@@ -5,6 +5,7 @@ COPY shiny-server.conf /etc/shiny-server/
 RUN apt-get update -qq && \
     apt-get install -y \
     pkg-config \
+    procps \
     libnlopt-dev \
     libmariadb-client-lgpl-dev \
     zlib1g-dev \
