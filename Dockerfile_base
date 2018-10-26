@@ -40,5 +40,4 @@ RUN R -e "install.packages('magrittr', repos = 'https://mran.microsoft.com/snaps
 RUN R -e "install.packages('purrr', repos = 'https://mran.microsoft.com/snapshot/2018-10-20')"
 
 RUN R -e "install.packages('BiocManager', repos = 'https://mran.microsoft.com/snapshot/2018-10-20')"
-
 RUN R -e "BiocManager::install('SummarizedExperiment')"
