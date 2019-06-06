@@ -1,18 +1,51 @@
-FROM ucbd2k/grcalculator-docker:test_base
+FROM rocker/rstudio-stable:3.5.1
 
-RUN R -e "install.packages('tictoc')"
-RUN R -e "remotes::install_github('uc-bd2k/GRmetrics', dependencies = F, ref = 'update')"
-RUN R -e "remotes::install_github('uc-bd2k/shinyLi', dependencies = F)"
+COPY shiny-server.conf /etc/shiny-server/
+
+RUN apt-get update -qq && \
+    apt-get install -y \
+    pkg-config \
+    procps \
+    libnlopt-dev \
+    libmariadb-client-lgpl-dev \
+    zlib1g-dev \
+    libssh2-1-dev \
+    libxml2-dev \
+    curl \
+    libpng-dev \
+    sudo \
+    wget \
+    nano \
+    git
+    
+RUN R -e "install.packages('readr', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('shiny', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('shinyjs', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('DT', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('formattable', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('plyr', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('shinyBS', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('markdown', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('remotes', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('htmltools', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('ggplot2', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('drc', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('plotly', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('ggsci', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('lemon', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('assertthat', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('dplyr', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('magrittr', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('purrr', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+
+
+RUN R -e "install.packages('gridExtra', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('caTools', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('cowplot', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('shiny.semantic', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('shinycssloaders', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
 
 RUN R -e "install.packages('BiocManager', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
 RUN R -e "BiocManager::install('SummarizedExperiment')"
-
-RUN git clone https://github.com/uc-bd2k/grcalculator.git
-RUN git clone https://github.com/uc-bd2k/grbrowser.git
-RUN git clone https://github.com/uc-bd2k/grtutorial.git
-
-RUN cd grcalculator && git checkout update && cd ..
-
-RUN mv grcalculator /srv/shiny-server
-RUN mv grbrowser /srv/shiny-server
-RUN mv grtutorial /srv/shiny-server
+RUN R -e "remotes::install_github('uc-bd2k/GRmetrics', dependencies = F, ref = 'update')"
+RUN R -e "remotes::install_github('uc-bd2k/shinyLi', dependencies = F)"
