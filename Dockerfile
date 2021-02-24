@@ -49,3 +49,5 @@ RUN R -e "install.packages('BiocManager', repos = 'https://mran.microsoft.com/sn
 RUN R -e "BiocManager::install('SummarizedExperiment')"
 RUN R -e "remotes::install_github('uc-bd2k/GRmetrics', dependencies = F, ref = 'update')"
 RUN R -e "remotes::install_github('uc-bd2k/shinyLi', dependencies = F)"
+RUN R -e "install.packages('tictoc', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('rsconnect', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
