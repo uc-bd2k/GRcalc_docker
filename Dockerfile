@@ -16,8 +16,14 @@ RUN apt-get update -qq && \
     sudo \
     wget \
     nano \
-    git
-    
+    git \
+    xclip
+
+### install updated rsconnect, etc.
+RUN R -e "install.packages('rsconnect', repos = 'https://mran.microsoft.com/snapshot/2021-02-12')"
+RUN R -e "install.packages('RJSONIO', repos = 'https://mran.microsoft.com/snapshot/2021-02-12')"
+RUN R -e "install.packages('PKI', repos = 'https://mran.microsoft.com/snapshot/2021-02-12')"
+### install version-controlled packages for the rest
 RUN R -e "install.packages('readr', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
 RUN R -e "install.packages('shiny', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
 RUN R -e "install.packages('shinyjs', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
@@ -50,4 +56,5 @@ RUN R -e "BiocManager::install('SummarizedExperiment')"
 RUN R -e "remotes::install_github('uc-bd2k/GRmetrics', dependencies = F, ref = 'update')"
 RUN R -e "remotes::install_github('uc-bd2k/shinyLi', dependencies = F)"
 RUN R -e "install.packages('tictoc', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
-RUN R -e "install.packages('rsconnect', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('rclipboard', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
+RUN R -e "install.packages('clipr', repos = 'https://mran.microsoft.com/snapshot/2019-02-12')"
